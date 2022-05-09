@@ -1,0 +1,50 @@
+.find-section {
+    margin-bottom: 15px;
+    position: sticky;
+    top: -10px;
+    margin-top: 0;
+    padding: 15px 15px 30px 15px;
+    text-align: center;
+    border-radius: 0 0 15px 15px;
+    color: white;
+    background: linear-gradient(rgba(#009b7f, .75), rgba(#802A0C, .85)), url("../../assets/Avatar.jpeg");
+    min-height: 100%;
+    background-size: cover;
+    background-position: 0 0;
+    z-index: 2;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+    h1 {
+        margin-bottom: 15px;
+        padding-bottom: 30px;
+    }
+
+    input {
+        width: 60%;
+        font-size: 14px;
+        text-align: center;
+        padding: 10px 20px;
+        background: rgba(#fff, 0.3);
+        border: 0px;
+        border-radius: 25px;
+        color: #fff;
+        outline: 0px !important;
+        margin-right: 10px;
+    }
+
+    button {
+        width: 20%;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        border: none;
+        background-color: #009b7fc4;
+        color: white;
+        font-weight: bold;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            background-color: #3aa995c4;
+        }
+    }
+}

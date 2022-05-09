@@ -1,0 +1,24 @@
+.home {
+    &_container {
+        width: 100%;
+        background-color: #eeeeee;
+        padding-top: 55px;
+
+        h1 {
+            margin: 0;
+        }
+    }
+}
+
+.container {
+    max-width: 1140px;
+    min-width: 340px;
+    margin: 0 auto;
+    padding: 0px 30px;
+}
+
+.home_container .movie-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
