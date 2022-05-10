@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { MovieItemDetail } from "./components/Home/MovieItem/MovieItemDetail";
+import { Movies } from "./components/Movies/Movies";
 import { Spinner } from "./components/Spinner/Spinner";
 import "./styles.scss";
 
@@ -17,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/:id" element={<MovieItemDetail />} />
+          <Route path="/movie" element={<Movies />} />
+          <Route path="/show" element={<Movies type="tv" />} />
         </Routes>
         {isLoading && <Spinner />}
       </BrowserRouter>

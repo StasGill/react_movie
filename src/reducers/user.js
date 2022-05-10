@@ -4,6 +4,7 @@ import {
   GET_MOVIE,
   GET_SEARCH,
   GET_TREND,
+  RESET,
   START_LOADING,
 } from "../actions/const";
 
@@ -24,6 +25,8 @@ const userReducer = (
       return { ...state, cast: action?.data };
     case GET_SEARCH:
       return { ...state, search: action?.data };
+    case RESET:
+      return { ...state, movie: {} };
     default:
       return state;
   }

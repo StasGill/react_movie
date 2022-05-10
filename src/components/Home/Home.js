@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrend } from "../../actions/User";
-
 import { FindSection } from "../FindSection/FindSection";
 import { MovieItem } from "./MovieItem/MovieItem";
 import "./styles.scss";
@@ -18,6 +17,7 @@ export const Home = () => {
     <div className="home_container">
       <div className="container">
         <FindSection />
+        <h1>Trend now</h1>
         <div className="movie-container">
           {trend?.results?.map((item) => {
             return (
@@ -27,6 +27,7 @@ export const Home = () => {
                 title={item.title || item.name}
                 id={item.id}
                 vote_average={item.vote_average}
+                media_type={item.media_type}
               />
             );
           })}

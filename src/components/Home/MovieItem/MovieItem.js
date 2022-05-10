@@ -5,11 +5,11 @@ import {
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
-export const MovieItem = ({ image, title, id, vote_average }) => {
+export const MovieItem = ({ image, title, id, vote_average, media_type }) => {
   const posterQuery = "https://image.tmdb.org/t/p/w300";
 
   return (
-    <Link to={`/${id}`} className="item_container">
+    <Link to={`/${id}?type=${media_type}`} className="item_container">
       <img src={`${posterQuery}${image}`} alt={title}></img>
       <div className="item_score">
         <CircularProgressbarWithChildren

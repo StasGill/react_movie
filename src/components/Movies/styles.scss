@@ -1,0 +1,35 @@
+.movies_container {
+    padding-top: 80px;
+    background-color: #eeeeee;
+    padding-bottom: 20px;
+}
+
+.movie_item {
+    display: flex;
+    margin-bottom: 15px;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    border-radius: 8px;
+    background-color: white;
+    padding-right: 15px;
+
+
+    &:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+
+    h3 {
+        margin-top: 10px;
+    }
+
+    img {
+        height: 200px;
+        margin-right: 10px;
+        margin-bottom: 0;
+        border-radius: 8px 0 0 8px;
+    }
+}
+
+.movie_img {
+    height: 200px;
+    width: 150px;
+}

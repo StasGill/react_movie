@@ -1,18 +1,31 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getMovie } from "../../../actions/User";
+import { getMovie, reset } from "../../../actions/User";
 import "./styles.scss";
+import { posterQuery } from "../../../actions/const";
+
+export function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 export const MovieItemDetail = () => {
   const { movie, cast } = useSelector((state) => state.user);
-  const posterQuery = "https://image.tmdb.org/t/p/w300";
   const dispatch = useDispatch();
   const { id } = useParams();
+  const query = useQuery();
+  const type = query.get("type") || 1;
 
   useEffect(() => {
-    dispatch(getMovie(id));
-  }, [dispatch, id]);
+    dispatch(getMovie(id, type));
+  }, [dispatch, id, type]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
 
   return (
     <>

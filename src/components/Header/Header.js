@@ -1,21 +1,21 @@
 import "./styles.scss";
 import "../Home/styles.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
     <div className="header_container">
       <div className="container">
-        <Link to="/">
+        <NavLink to="/">
           <span>Movies</span>
-        </Link>
+        </NavLink>
         <ul>
-          <Link to="/movies">
+          <NavLink to="/movie?search=">
             <li>movies</li>
-          </Link>
-          <Link to="/show">
+          </NavLink>
+          <NavLink to="/show">
             <li>show</li>
-          </Link>
+          </NavLink>
         </ul>
       </div>
     </div>

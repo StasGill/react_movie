@@ -3,9 +3,10 @@
         width: 100%;
         background-color: #eeeeee;
         padding-top: 55px;
+        text-align: center;
 
         h1 {
-            margin: 0;
+            margin: 0 0 15px 0;
         }
     }
 }
@@ -15,6 +16,10 @@
     min-width: 340px;
     margin: 0 auto;
     padding: 0px 30px;
+
+    @media (max-width: 450px) {
+        padding: 0px 10px;
+    }
 }
 
 .home_container .movie-container {

@@ -1,34 +1,48 @@
-.header{
-    &_container{
+.header {
+    &_container {
         position: fixed;
         z-index: 3;
         top: 0;
         width: 100%;
-        color:white;
+        color: white;
         background-color: #160040;
         padding-top: 10px;
         padding-bottom: 10px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        ul{
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+        ul {
             width: 150px;
             justify-content: space-between;
         }
-        span{
+
+        span {
             font-weight: bold;
             font-size: 30px;
         }
-        li{
+
+        li {
             font-weight: bold;
             transition: all 0.4s ease-in-out;
-            &:hover{
+
+            &:hover {
                 transform: scale(1.2);
             }
         }
     }
 }
 
-.header_container .container{
+.header_container .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.active {
+    color: #24a38c;
+    font-weight: bold;
+}
+
+.not-active {
+    color: white;
+    font-weight: bold;
 }
