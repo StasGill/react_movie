@@ -41,7 +41,7 @@ export const MovieItemDetail = () => {
             </div>
             <div className="description_about">
               <p>
-                <b>Name: </b> {movie.title}
+                <b>Name: </b> {movie.title || movie.name}
               </p>
               <p>
                 <b>Release date: </b>

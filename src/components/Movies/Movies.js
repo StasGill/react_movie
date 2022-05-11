@@ -23,7 +23,7 @@ export const Movies = ({ type }) => {
             item.poster_path && (
               <MovieItem
                 img={item.poster_path}
-                title={item.title}
+                title={item.title || item.name}
                 desc={item.overview}
                 id={item.id}
                 key={item.id}
