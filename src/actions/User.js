@@ -1,6 +1,9 @@
 import {
   fetchTrend,
   findMovie,
+  getActorById,
+  getActorByIdMovie,
+  getActorByIdSocial,
   getCastById,
   getMovieById,
 } from "../api/api.js";
@@ -12,6 +15,7 @@ import {
   GET_CAST,
   GET_SEARCH,
   RESET,
+  GET_ACTOR,
 } from "./const.js";
 
 const empty = {};
@@ -43,6 +47,18 @@ export const getMovie = (id, type) => async (dispatch) => {
     dispatch({ type: GET_CAST, empty });
     dispatch({ type: END_LOADING });
   }
+};
+
+export const getActor = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await getActorById(id);
+    const { data: links } = await getActorByIdSocial(id);
+    const { data: movie } = await getActorByIdMovie(id);
+
+    dispatch({ type: GET_ACTOR, data, links, movie });
+    dispatch({ type: END_LOADING });
+  } catch (error) {}
 };
 
 export const getSearch = (query, type, page) => async (dispatch) => {

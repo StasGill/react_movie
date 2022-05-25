@@ -1,5 +1,6 @@
 import {
   END_LOADING,
+  GET_ACTOR,
   GET_CAST,
   GET_MOVIE,
   GET_SEARCH,
@@ -9,7 +10,14 @@ import {
 } from "../actions/const";
 
 const userReducer = (
-  state = { isLoading: false, trend: {}, movie: {}, cast: {}, search: [] },
+  state = {
+    isLoading: false,
+    trend: {},
+    movie: {},
+    cast: {},
+    search: [],
+    actor: {},
+  },
   action
 ) => {
   switch (action.type) {
@@ -24,6 +32,11 @@ const userReducer = (
       return { ...state, movie: action?.data, cast: action?.crew };
     case GET_CAST:
       return { ...state, cast: action?.data };
+    case GET_ACTOR:
+      return {
+        ...state,
+        actor: { ...action?.data, ...action?.links, ...action?.movie },
+      };
     case GET_SEARCH:
       return { ...state, search: action?.data };
     case RESET:

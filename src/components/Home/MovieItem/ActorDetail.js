@@ -2,16 +2,17 @@ import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getActor, getMovie, reset } from "../../../actions/User";
+import { getActor, reset } from "../../../actions/User";
 import "./styles.scss";
 import { posterQuery } from "../../../actions/const";
+import { InstagramIcon } from "../../../assets/InstagramIcon.js";
 
 export function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-export const MovieItemDetail = () => {
-  const { movie, cast } = useSelector((state) => state.user);
+export const ActorDetail = () => {
+  const { actor } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { id } = useParams();
   const query = useQuery();
@@ -22,7 +23,7 @@ export const MovieItemDetail = () => {
   };
 
   useEffect(() => {
-    dispatch(getMovie(id, type));
+    dispatch(getActor(id));
   }, [dispatch, id, type]);
 
   useEffect(() => {
@@ -33,54 +34,51 @@ export const MovieItemDetail = () => {
 
   return (
     <>
-      {movie?.id && (
+      {actor?.id && (
         <div className="container">
           <div className="description">
             <div className="description_image">
               <img
-                src={posterQuery + movie?.poster_path}
+                src={posterQuery + actor?.profile_path}
                 className="listItemImg"
                 alt=""
               />
+              {actor.instagram_id && (
+                <a
+                  href={`https://www.instagram.com/${actor.instagram_id}`}
+                  target="blank"
+                >
+                  <InstagramIcon />
+                </a>
+              )}
             </div>
             <div className="description_about">
               <p>
-                <b>Name: </b> {movie.title || movie.name}
+                <b>Name: </b> {actor.name}
               </p>
               <p>
-                <b>Release date: </b>
-                {movie.first_air_date
-                  ? movie.first_air_date
-                  : movie.release_date}
+                <b>Birthday: </b> {actor.birthday}
               </p>
               <p>
-                <b> Score: </b> {movie.vote_average}
+                <b>Biography </b>
               </p>
-              <p>
-                <b>Genre:</b>
-                {movie.genres &&
-                  movie.genres.map((item) => (
-                    <span key={item.name} className="description_genres">
-                      {item.name}
-                    </span>
-                  ))}
-              </p>
-              <p>{movie.overview}</p>
+
+              <p>{actor.biography}</p>
             </div>
           </div>
           <div className="cast_container">
-            {cast?.cast?.map((item, index) => {
+            {actor?.cast?.map((item) => {
               return (
-                item.profile_path && (
-                  <Link to={`/actor/${item.id}`} key={item.id + index}>
+                item.poster_path && (
+                  <Link to={`/${item.id}?type=movie`} key={item.id}>
                     <div className="cast" onClick={() => onClickActor(item.id)}>
                       <div className="cast_img">
                         <img
-                          src={`${posterQuery}${item?.profile_path}`}
-                          alt={item?.name}
+                          src={`${posterQuery}${item?.poster_path}`}
+                          alt={item?.title}
                         />
                       </div>
-                      <p>{item?.name}</p>
+                      <p>{item?.title}</p>
                     </div>
                   </Link>
                 )
@@ -89,9 +87,9 @@ export const MovieItemDetail = () => {
           </div>
         </div>
       )}
-      {!movie?.id && (
+      {!actor?.id && (
         <div className="headerNotFound">
-          <h1>Movie Not Found</h1>
+          <h1>Actor Not Found</h1>
         </div>
       )}
     </>

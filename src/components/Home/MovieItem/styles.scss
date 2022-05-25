@@ -82,6 +82,15 @@
       border-radius: 8px;
     }
 
+    svg {
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        fill: #24a38c;
+      }
+    }
+
     @media (max-width: 550px) {
       width: 70%;
     }
@@ -142,4 +151,5 @@
   width: 100%;
   display: flex;
   padding: 15px 0;
+  align-self: stretch;
 }

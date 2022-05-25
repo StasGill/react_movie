@@ -11,6 +11,15 @@ export const fetchTrend = (page = 1) =>
 export const getMovieById = (id, type = "movie", params = "") =>
   API.get(`${type}/${id}${params}?api_key=${key}&language=en`);
 
+export const getActorById = (id) =>
+  API.get(`person/${id}?api_key=${key}&language=en`);
+
+export const getActorByIdSocial = (id) =>
+  API.get(`person/${id}/external_ids?api_key=${key}&language=en`);
+
+export const getActorByIdMovie = (id) =>
+  API.get(`person/${id}/movie_credits?api_key=${key}&language=en`);
+
 export const getCastById = (id, type = "movie") =>
   API.get(`${type}/${id}/credits?api_key=${key}&language=en`);
 
@@ -25,3 +34,5 @@ export const findMovie = (query, type = "movie", page = 1) => {
   );
   return response;
 };
+
+//movie_credits
