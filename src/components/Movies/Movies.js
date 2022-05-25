@@ -1,3 +1,4 @@
+import { Pagination } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearch } from "../../actions/User";
@@ -11,6 +12,11 @@ export const Movies = ({ type }) => {
   const dispatch = useDispatch();
   const searchQuery = query.get("search") || 1;
 
+  const handleChange = (event, value) => {
+    dispatch(getSearch(searchQuery, type, value));
+    window.scrollTo(0, 0);
+  };
+
   useEffect(() => {
     dispatch(getSearch(searchQuery, type));
   }, [dispatch, type, searchQuery]);
@@ -18,7 +24,7 @@ export const Movies = ({ type }) => {
   return (
     <div className="movies_container">
       <div className="container">
-        {search.results?.map(
+        {search?.results?.map(
           (item) =>
             item.poster_path && (
               <MovieItem
@@ -30,6 +36,17 @@ export const Movies = ({ type }) => {
                 type={type}
               />
             )
+        )}
+        {search.results && (
+          <div className="pagination">
+            <Pagination
+              count={search?.total_pages}
+              page={search?.page}
+              onChange={handleChange}
+              variant="outlined"
+              color="primary"
+            />
+          </div>
         )}
       </div>
     </div>

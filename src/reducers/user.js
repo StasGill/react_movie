@@ -9,7 +9,7 @@ import {
 } from "../actions/const";
 
 const userReducer = (
-  state = { isLoading: false, trend: {}, movie: {}, cast: {}, search: {} },
+  state = { isLoading: false, trend: {}, movie: {}, cast: {}, search: [] },
   action
 ) => {
   switch (action.type) {
@@ -19,6 +19,7 @@ const userReducer = (
       return { ...state, isLoading: false };
     case GET_TREND:
       return { ...state, trend: action?.data };
+
     case GET_MOVIE:
       return { ...state, movie: action?.data, cast: action?.crew };
     case GET_CAST:

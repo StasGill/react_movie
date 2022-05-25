@@ -16,10 +16,11 @@ import {
 
 const empty = {};
 
-export const getTrend = () => async (dispatch) => {
+export const getTrend = (page) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-    const { data } = await fetchTrend();
+    const { data } = await fetchTrend(page);
+
     dispatch({ type: GET_TREND, data });
     dispatch({ type: END_LOADING });
   } catch (error) {
@@ -44,10 +45,10 @@ export const getMovie = (id, type) => async (dispatch) => {
   }
 };
 
-export const getSearch = (query, type) => async (dispatch) => {
+export const getSearch = (query, type, page) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-    const { data } = await findMovie(query, type);
+    const { data } = await findMovie(query, type, page);
 
     dispatch({ type: GET_SEARCH, data });
     dispatch({ type: END_LOADING });

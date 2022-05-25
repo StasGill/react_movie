@@ -2,6 +2,7 @@
     padding-top: 80px;
     background-color: #eeeeee;
     padding-bottom: 20px;
+    text-align: center;
 }
 
 .movie_item {
@@ -11,6 +12,8 @@
     border-radius: 8px;
     background-color: white;
     padding-right: 15px;
+    text-align: left;
+
 
 
     &:hover {
@@ -32,4 +35,9 @@
 .movie_img {
     height: 200px;
     width: 150px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
 }
