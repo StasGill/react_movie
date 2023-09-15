@@ -24,7 +24,7 @@ export const MovieItem = ({ image, title, id, vote_average, media_type }) => {
           })}
         >
           <div className="item_score-margin">
-            <strong>{vote_average}</strong>
+            <strong>{Math.round(vote_average)}</strong>
           </div>
         </CircularProgressbarWithChildren>
       </div>
